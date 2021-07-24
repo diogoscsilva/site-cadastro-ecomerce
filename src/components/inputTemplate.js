@@ -1,10 +1,10 @@
-import {useState, useEffect} from "react"
+import React, {useState, useEffect} from "react"
 export default function InputTemplate (props) {
  
     const [field, setField] = useState(props.temp)
     
     useEffect(() =>{
-      setField(temp)
+      setField(props.temp)
     },[props.temp])
    
     return (
