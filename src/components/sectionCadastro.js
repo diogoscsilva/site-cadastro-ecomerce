@@ -11,11 +11,11 @@ buttonsText = {
 
 export default function SectionCadastro (props) {
  
-    const [activeForm, activeForm] = useState('entrada')
+    const [activeForm, setActiveForm] = useState('entrada')
     
     
     const listTable = Object.keys(buttonsText).map(tableName => {
-      <li ><button key={tableName} onClick={()=>useState(tableName)}>
+      <li ><button key={tableName} onClick={()=>setActiveForm(tableName)}>
           {buttonsText[tableName]}
       </button></li>
     })
