@@ -68,9 +68,9 @@ export default function FormTemplate (props) {
       setTemp({})
     }
     
-    const listInput = tableFields[props.formName].map(fieldName => {
+    const listInput = tableFields[props.formName].map(fieldName =>
       <InputTemplate key={fieldName} fieldName={fieldName} temp={temp[fieldName]} setTempField={setTempField(fieldName)}/>
-    })
+    )
     
     return (
       <div className="card">

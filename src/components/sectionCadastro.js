@@ -14,11 +14,11 @@ export default function SectionCadastro (props) {
     const [activeForm, setActiveForm] = useState('entrada')
     
     
-    const listTable = Object.keys(buttonsText).map(tableName => {
+    const listTable = Object.keys(buttonsText).map(tableName => 
       <li><button key={tableName} onClick={()=>setActiveForm(tableName)}>
           {buttonsText[tableName]}
       </button></li>
-    })
+    )
    
     return (
       <>
