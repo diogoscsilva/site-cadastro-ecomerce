@@ -1,6 +1,6 @@
 import storage from "./dataController"
 
-setCliente = function (cliente, nomePrevio) {
+function setCliente (cliente, nomePrevio) {
   const {nome, email, cpf, dataNascimento, telefone,
     cep, rua, numero, bairro, cidade, estado} =  cliente
   if (nome !== null || email !== null || cpf !== null ||
@@ -27,7 +27,7 @@ setCliente = function (cliente, nomePrevio) {
   }
 
 
-setProduto = function (produtoObj, nomeProdutoPrevio) {
+  function setProduto (produtoObj, nomeProdutoPrevio) {
     const {produto, preco, descricao} = produtoObj
     if (produto !== null || preco !== null) {
       const quantidade = 0
@@ -44,11 +44,11 @@ setProduto = function (produtoObj, nomeProdutoPrevio) {
     }
   }
   
-  quantidadeDipsonivel = function (nomeProduto, quantidade) {
+  function quantidadeDipsonivel (nomeProduto, quantidade) {
       let produtoQuantidade = parseInt(storage.getField("produtos", "quantidade", nomeProduto))
       return produtoQuantidade >= parseInt(quantidade)
   }
-  reduzQuantidadeProduto = function (nomeProduto, quantidade) {
+  function reduzQuantidadeProduto (nomeProduto, quantidade) {
       const produtoQuantidade = parseInt(storage.getField("produtos", "quantidade", nomeProduto))
       const quantidadeRetirada = parseInt(quantidade)
       if (produtoQuantidade < quantidadeRetirada) {
@@ -81,7 +81,7 @@ setProduto = function (produtoObj, nomeProdutoPrevio) {
   }
      
 
-setLote = function (lote) {
+  function setLote (lote) {
     const {produto, valor, quantidade} = lote
     if (produto !== null || valor !== null || quantidade !== null) {
       const data = new Date().getTime()
@@ -98,7 +98,7 @@ setLote = function (lote) {
     }
   }
 
-setNota = function (notaReferencias) {
+  function setNota (notaReferencias) {
     if (notaReferencia.nome !== null || notaReferencia.produto !== null ||
          !notaReferencia.quantidade) {
         const {nome, produto, quantidade} = notaReferencia          

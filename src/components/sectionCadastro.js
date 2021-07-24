@@ -2,7 +2,7 @@ import {useState} from "react"
 import FormTemplate from "./formTemplate"
 
 
-buttonsText = {
+const buttonsText = {
   produtos: 'Cadastro de produtos',
   lotes: 'Inclusao de lote de produto',
   notas: 'Emissao de nota',

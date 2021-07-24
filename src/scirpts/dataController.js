@@ -1,4 +1,4 @@
-schema = {
+const schema = {
     lotes: {
       primariesTables : {
         produto: "produtos",
@@ -24,7 +24,7 @@ schema = {
       fieldIndex: 'produto'
     },
   }
-storeManagerCookies = function (schema) {
+const storeManagerCookies = function (schema) {
   const that = {}
   const storeObj = {temp:{}}
   let stage = {}
@@ -49,7 +49,7 @@ storeManagerCookies = function (schema) {
         }
       }
     }
-    stage[temp] = true
+    stage.temp = true
   } else {
     for (let i = 0; i < cookies.length; i++) {
       const cookieData = (cookies[i] || '').trim().split('=')
@@ -76,7 +76,7 @@ storeManagerCookies = function (schema) {
   }
   return that
 }(schema)
-storage = function (schema, storeManager) {
+const storage = function (schema, storeManager) {
   const that = {}
   
   const incrementIndex = function (foreingIndexName, key, reference) {
@@ -187,7 +187,7 @@ storage = function (schema, storeManager) {
   that.setTemp = function(tableName, values) {
     const temp = storeManager.getObj('temp')
     temp[tableName] = values
-    storeManager.setObj(tableName, table)
+    storeManager.setObj(tableName, temp[tableName])
     storeManager.commit()
   }
   
@@ -199,7 +199,7 @@ storage = function (schema, storeManager) {
   that.setTempField = function(tableName, field, value) {
     const temp = storeManager.getObj('temp')
     temp[tableName][field] = value
-    storeManager.setObj(tableName, table)
+    storeManager.setObj(tableName, temp[tableName])
     storeManager.commit()
   }
   
