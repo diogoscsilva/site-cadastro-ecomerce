@@ -135,6 +135,6 @@ function setCliente (cliente, nomePrevio) {
     lotes: setLote,
     notas: setNota,
     clientes: setCliente,
-    quantidade: setCliente,
+    quantidade: quantidadeDipsonivel,
   }
   export default setters

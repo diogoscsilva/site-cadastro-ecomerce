@@ -22,7 +22,7 @@ export default function SectionCadastro (props) {
    
     return (
       <>
-        <nav aria-level = "2">
+        <nav>
           <ul>
             {listTable}
           </ul>
