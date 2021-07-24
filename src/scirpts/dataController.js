@@ -113,7 +113,7 @@ const storage = function (schema, storeManager) {
           let primaryIndex = storeManager.getObj(primaryTableName + 'Index')
           let primaryKey = values[fieldIndex]
           if (!primaryTable[[primaryIndex[primaryKey]]]) {
-            throw 'Integrity failure'
+            throw new Error('Integrity failure')
           }
           if (schema[primaryTableName] && schema[primaryTableName].foreingIndexes) {
             let foreingIndexName = schema[primaryTableName].foreingIndexes[tableName]

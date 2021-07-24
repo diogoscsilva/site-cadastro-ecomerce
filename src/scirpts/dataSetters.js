@@ -10,8 +10,8 @@ function setCliente (cliente, nomePrevio) {
           nome,
           email,
           cpf,
-          dataNascimento: dataNascimento &&
-            new Date(dataNascimento).getTime() || '',
+          dataNascimento: (dataNascimento &&
+            new Date(dataNascimento).getTime()) || '',
           telefone,
           cep,
           rua,
@@ -52,7 +52,7 @@ function setCliente (cliente, nomePrevio) {
       const produtoQuantidade = parseInt(storage.getField("produtos", "quantidade", nomeProduto))
       const quantidadeRetirada = parseInt(quantidade)
       if (produtoQuantidade < quantidadeRetirada) {
-        throw 'Quantidade indiponivel'
+        throw new Error('Quantidade indiponivel')
       }
       let quantidadeNecessaria = quantidadeRetirada
       let produtoLote = 0
@@ -135,5 +135,6 @@ function setCliente (cliente, nomePrevio) {
     lotes: setLote,
     notas: setNota,
     clientes: setCliente,
+    quantidade: setCliente,
   }
   export default setters
