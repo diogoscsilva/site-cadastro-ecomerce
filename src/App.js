@@ -1,10 +1,10 @@
 import React from "react"
 import "./App.css"
-import SectoinCadstro from "sectoinCadstro"
+import SectionCadastro from "sectionCadastro"
 
 function App () {
     return (
-      <SectoinCadstro/>
+      <SectionCadastro/>
     )
 }
 
