@@ -1,5 +1,5 @@
 import {useState} from "react"
-import FormTemplate from "formTemplate"
+import FormTemplate from "./formTemplate"
 
 
 buttonsText = {

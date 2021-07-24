@@ -1,7 +1,7 @@
 import {useState} from "react"
-import InputTemplate from "inputTemplate"
-import storage from "dataController"
-import setters from "dataSetters"
+import InputTemplate from "./inputTemplate"
+import storage from "../scirpts/dataController"
+import setters from "../scirpts/dataSetters"
 tableField = {
     produtos: [
       'produto',

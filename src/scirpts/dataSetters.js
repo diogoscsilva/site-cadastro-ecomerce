@@ -1,4 +1,4 @@
-import storage from "dataController"
+import storage from "./dataController"
 
 setCliente = function (cliente, nomePrevio) {
   const {nome, email, cpf, dataNascimento, telefone,
