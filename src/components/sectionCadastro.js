@@ -1,4 +1,4 @@
-import {useState} from "react"
+import React, {useState} from "react"
 import FormTemplate from "./formTemplate"
 
 
@@ -15,7 +15,7 @@ export default function SectionCadastro (props) {
     
     
     const listTable = Object.keys(buttonsText).map(tableName => {
-      <li ><button key={tableName} onClick={()=>setActiveForm(tableName)}>
+      <li><button key={tableName} onClick={()=>setActiveForm(tableName)}>
           {buttonsText[tableName]}
       </button></li>
     })

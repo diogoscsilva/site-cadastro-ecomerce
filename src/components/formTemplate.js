@@ -1,4 +1,4 @@
-import {useState} from "react"
+import React, {useState} from "react"
 import InputTemplate from "./inputTemplate"
 import storage from "../scirpts/dataController"
 import setters from "../scirpts/dataSetters"
