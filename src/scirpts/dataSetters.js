@@ -56,7 +56,7 @@ function setCliente (cliente, nomePrevio) {
       }
       let quantidadeNecessaria = quantidadeRetirada
       let produtoLote = 0
-      let numLote = storage.getRow("produtoLoteIndex", produto + produtoLote)
+      let numLote = storage.getRow("produtoLoteIndex", nomeProduto + produtoLote)
       let lote = storage.getRow("lotes", numLote)
       let origemLotes = ''
       while (lote && quantidadeNecessaria > 0) {
@@ -73,10 +73,10 @@ function setCliente (cliente, nomePrevio) {
           }
         }
         produtoLote++
-        numLote = storage.getRow("produtoLoteIndex", produto + produtoLote)
+        numLote = storage.getRow("produtoLoteIndex", nomeProduto + produtoLote)
         lote = storage.getRow("lotes", numLote)
       }
-      storage.setField("produtos", "quantidade",produto, produtoQuantidade - quantidadeRetirada)
+      storage.setField("produtos", "quantidade",nomeProduto, produtoQuantidade - quantidadeRetirada)
       return origemLotes
   }
      
@@ -86,7 +86,7 @@ function setCliente (cliente, nomePrevio) {
     if (produto !== null || valor !== null || quantidade !== null) {
       const data = new Date().getTime()
       storage.setRow("lotes", {
-        nome,
+        produto,
         valor,
         data,
         quantidade,
@@ -99,9 +99,9 @@ function setCliente (cliente, nomePrevio) {
   }
 
   function setNota (notaReferencias) {
-    if (notaReferencia.nome !== null || notaReferencia.produto !== null ||
-         !notaReferencia.quantidade) {
-        const {nome, produto, quantidade} = notaReferencia          
+    if (notaReferencias.nome !== null || notaReferencias.produto !== null ||
+         !notaReferencias.quantidade) {
+        const {nome, produto, quantidade} = notaReferencias          
         let preco = storage.getField("produtos", "preco", produto)
         let cliente = storage.getRow("clientes", nome) || {}
         let data = new Date().getTime()
