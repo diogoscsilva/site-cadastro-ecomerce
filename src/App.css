@@ -38,7 +38,7 @@ root{
   justify-content: stretch;
 }
 
-nav a {
+nav button {
   text-decoration: none;
   background-color: #f44336;
   color: white;
@@ -69,6 +69,10 @@ nav a {
   width: 100%;
 }
 
+
+.inputAlert {
+  color: red;
+}
 
 .section {
   display: flex;

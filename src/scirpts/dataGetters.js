@@ -24,8 +24,8 @@ function getByPrimaryIndex (nomeTabela, nomeIndex, nomeProp, tratamentoFunc) {
     if (time) {
       const dateObj =  new Date(time)
       const dateString = 
-        '' + dateObj.getDay() + '//' +
-        dateObj.getMonth()+ '//' +
+        '' + dateObj.getDate() + '/' +
+        dateObj.getMonth()+ '/' +
         dateObj.getFullYear()
       return dateString
     }

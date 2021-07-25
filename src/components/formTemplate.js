@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react"
 import InputTemplate from "./inputTemplate"
 import storage from "../scirpts/dataController"
 import setters from "../scirpts/dataSetters"
+import checkes from "../scirpts/dataCheckers"
 const tableFields = {
     produtos: [
       ['produto', 'nome do produto'],
@@ -37,6 +38,7 @@ const tableFields = {
 export default function FormTemplate (props) {
 
     const [temp, setTemp] = useState(storage.getTemp(props.formName))
+    const [checkAlert, setCheckAlert] = useState(false)
     
     useEffect(() =>{
       setTemp(storage.getTemp(props.formName))
@@ -45,6 +47,15 @@ export default function FormTemplate (props) {
     function setTempField (field) {
       return (value) => {
         storage.setTempField(props.formName, field, value)
+        if (checks[props.formName] && checks[props.formName][field]) {
+          if (checks[props.formName][field](value)) {
+            setCheckAlert(false)
+          } else {
+            setCheckAlert(true)
+          }
+        } else {
+          setCheckAlert(false)
+        }
       }
     }
     
@@ -62,9 +73,12 @@ export default function FormTemplate (props) {
     }
     
     const listInput = tableFields[props.formName].map(field =>
-      <InputTemplate key={field[0]} fieldName={field[0]} temp={temp[field[0]]}
-      getTempField={getTempField(field[0])} info = {field[1]}
-      setTempField={setTempField(field[0])}/>
+      <InputTemplate 
+        key={field[0]} fieldName={field[0]} temp={temp[field[0]]}
+        getTempField={getTempField(field[0])} info = {field[1]}
+        setTempField={setTempField(field[0])}
+        className={(checkAlert && 'inputAlert') || ''}
+      />
     )
     
     return (

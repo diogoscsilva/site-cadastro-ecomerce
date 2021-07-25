@@ -21,6 +21,7 @@ export default function ViewTemplate (props) {
 
     const [temp, setTemp] = useState('')
     const [dataOutput, setDataOutput] = useState([])
+    const [checkAlert, setCheckAlert] = useState(false)
 
     useEffect(() =>{
       setTemp('')
@@ -51,7 +52,9 @@ export default function ViewTemplate (props) {
             data = dataToCompnonent(itens)
           }
           setDataOutput(data)
+          setCheckAlert(false)
         } else {
+          setCheckAlert(true)
           setDataOutput([])
         }
         setTemp(value)
@@ -64,9 +67,12 @@ export default function ViewTemplate (props) {
 
     
     const listInput = tableFields[props.formName].map(field =>
-      <InputTemplate key={field[0]} fieldName={field[0]} temp={temp}
-      getTempField={getTempField(field[0])} info = {field[1]}
-      setTempField={setTempField(field[0])}/>
+      <InputTemplate 
+        key={field[0]} fieldName={field[0]} temp={temp}
+        getTempField={getTempField(field[0])} info = {field[1]}
+        setTempField={setTempField(field[0])}
+        className={(checkAlert && 'inputAlert') || ''}
+      />
     )
 
 
