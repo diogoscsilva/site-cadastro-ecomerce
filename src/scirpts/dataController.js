@@ -1,7 +1,24 @@
 import {dataPreLoad, schema} from "./dataToTemplate"
 
+
+
 const storeManagerCookies = function (schema) {
   const that = {}
+  that.setObj = function(objname, obj) {
+    storeObj[objname] = obj
+    stage[objname] = true
+  }
+  that.getObj = function(objname) {
+    return storeObj[objname]
+  }
+  that.commit = function() {
+    for (let objName in stage) {
+      let convertData = JSON.stringify(storeObj[objName])
+      const validade = new Date((new Date()).getTime() + 20*24*60*60*1000).toGMTString()
+      document.cookie = objName + "=" + convertData + ";expires=" + validade + ";SameSite=None; Secure;"
+    }
+    stage = {}
+  }
   const storeObj = {temp:{}}
   let stage = {}
   let cookies = document.cookie.split(';')
@@ -42,6 +59,15 @@ const storeManagerCookies = function (schema) {
     }
   }
   cookies = undefined
+  return that
+}(schema)
+
+  
+const storeLocalManager = function (schema) {
+  if (!window || !window.localStorage) {
+    return
+  }
+  const that = {}
   that.setObj = function(objname, obj) {
     storeObj[objname] = obj
     stage[objname] = true
@@ -52,20 +78,10 @@ const storeManagerCookies = function (schema) {
   that.commit = function() {
     for (let objName in stage) {
       let convertData = JSON.stringify(storeObj[objName])
-      const validade = new Date((new Date()).getTime() + 20*24*60*60*1000).toGMTString()
-      document.cookie = objName + "=" + convertData + ";expires=" + validade + ";SameSite=None; Secure;"
+      localStorage.setItem(objName, convertData)
     }
     stage = {}
   }
-  return that
-}(schema)
-
-  
-const storeLocalManager = function (schema) {
-  if (!window || !window.localStorage) {
-    return
-  }
-  const that = {}
   const storeObj = {temp:{}}
   let stage = {}
   let dataLoad
@@ -114,20 +130,6 @@ const storeLocalManager = function (schema) {
   if (dataLoad) {
     that.commit()
     dataLoad = undefined
-  }
-  that.setObj = function(objname, obj) {
-    storeObj[objname] = obj
-    stage[objname] = true
-  }
-  that.getObj = function(objname) {
-    return storeObj[objname]
-  }
-  that.commit = function() {
-    for (let objName in stage) {
-      let convertData = JSON.stringify(storeObj[objName])
-      localStorage.setItem(objName, convertData)
-    }
-    stage = {}
   }
   return that
 }(schema)
