@@ -76,6 +76,72 @@ const storeManagerCookies = function (schema) {
   }
   return that
 }(schema)
+
+  
+const storeLocalManager = function (schema) {
+  if (!window || !window.localStorage) {
+    return
+  }
+  const that = {}
+  const storeObj = {temp:{}}
+  let stage = {}
+  for (let table in schema) {
+    if (schema.hasOwnProperty(table)) {
+      if (localStorage.getItem(table)) {
+        storeObj[table] = JSON.parse(localStorage.getItem(table))
+        if (schema[table].fieldIndex) {
+          storeObj[table + 'Index'] = JSON.parse(localStorage.getItem(table + 'Index'))
+        }
+        if (schema[table].foreingIndexes) {
+          for (let foreingIndex in schema[table].foreingIndexes) {
+            if (schema[table].foreingIndexes.hasOwnProperty(foreingIndex)) {
+              storeObj[schema[table].foreingIndexes[foreingIndex]] = JSON.parse(
+                localStorage.getItem(schema[table].foreingIndexes[foreingIndex])
+              )
+            }
+          }
+        }
+      } else {
+        storeObj[table] = []
+        storeObj.temp[table] = {}
+        stage[table] = true
+        if (schema[table].fieldIndex) {
+          storeObj[table + 'Index'] = {}
+          stage[table + 'Index'] = true
+        }
+        if (schema[table].foreingIndexes) {
+          for (let foreingIndex in schema[table].foreingIndexes) {
+            if (schema[table].foreingIndexes.hasOwnProperty(foreingIndex)) {
+              storeObj[schema[table].foreingIndexes[foreingIndex]] = {}
+              stage[schema[table].foreingIndexes[foreingIndex]] = true
+            }
+          }
+        }
+      }
+    }
+  }
+  if (localStorage.getItem('temp')) {
+    storeObj.temp = JSON.parse(localStorage.getItem('temp'))
+  } else {
+    stage.temp = true
+  }
+  that.setObj = function(objname, obj) {
+    storeObj[objname] = obj
+    stage[objname] = true
+  }
+  that.getObj = function(objname) {
+    return storeObj[objname]
+  }
+  that.commit = function() {
+    for (let objName in stage) {
+      let convertData = JSON.stringify(storeObj[objName])
+      localStorage.setItem(objName, convertData)
+    }
+    stage = {}
+  }
+  return that
+}(schema)
+
 const storage = function (schema, storeManager) {
   const that = {}
   
@@ -228,6 +294,6 @@ const storage = function (schema, storeManager) {
     storeManager.commit()
   }
   return that
-}(schema, storeManagerCookies)
+}(schema, storeLocalManager || storeManagerCookies)
 
 export default storage

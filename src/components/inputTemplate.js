@@ -16,7 +16,9 @@ export default function InputTemplate (props) {
         }
         onBlur = { 
           e => {
-            props.setTemp(e.target.value)
+            if (e.target.value !== props.getTempField()) {
+              props.setTempField(e.target.value)
+            }
           }
         }
       />

@@ -28,7 +28,7 @@ function setCliente (cliente, nomePrevio) {
 
 
   function setProduto (produtoObj, nomeProdutoPrevio) {
-    const {produto, preco, descricao} = produtoObj
+    const {produto, preco, descricao, foto} = produtoObj
     if (produto !== null || preco !== null) {
       const quantidade = 0
       storage.setRow("produtos", 
@@ -36,6 +36,7 @@ function setCliente (cliente, nomePrevio) {
           produto,
           descricao,
           preco,
+          foto,
           quantidade,
         },
         nomeProdutoPrevio
