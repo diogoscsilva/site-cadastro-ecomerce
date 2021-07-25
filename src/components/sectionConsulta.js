@@ -7,7 +7,7 @@ const buttonsText = {
   clientes: 'Consulta de clientes',
 }
 
-export default function ViewTemplate () {
+export default function SectionConsulta () {
  
     const [activeForm, setActiveForm] = useState('produtos')
     const [refresh, setRefresh] = useState(false)
