@@ -95,7 +95,7 @@ const buttonsText = {
   },
 }
 
-dataPreLoad = {
+const dataPreLoad = {
   produtos: [
     {
       descricao: "ferro de passar",
