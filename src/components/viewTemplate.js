@@ -54,9 +54,7 @@ export default function ViewTemplate (props) {
     return (
 
       <div>
-        <form action="" onSubmit={submitHandler}>
          {listInput}
-        </form>
          {dataOuput}
       </div>
     )
