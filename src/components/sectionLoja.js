@@ -6,7 +6,7 @@ export default function Loja () {
   const itensLength = storage.length('produtos')
   let intesList = []
   for (let i = 0; i < itensLength; i++) {
-    let item = storage.getRow(i)
+    let item = storage.getRow('produtos', i)
     intesList.push(
       <section className= "section">
         <div className = "card">
