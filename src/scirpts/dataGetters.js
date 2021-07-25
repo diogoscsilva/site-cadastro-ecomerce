@@ -31,7 +31,7 @@ function getByPrimaryIndex (nomeTabela, nomeIndex, nomeProp, tratamentoFunc) {
     }
   }
 
-  function getLoteProduto (nomeProduto) {
+  function getProdutoProduto (nomeProduto) {
     return getByPrimaryIndex ('produtos', 'produtosIndex', nomeProduto, trataProduto)
   }
   function trataProduto (produto) {
@@ -95,7 +95,7 @@ function getByPrimaryIndex (nomeTabela, nomeIndex, nomeProp, tratamentoFunc) {
       produto: getLoteProduto,
     },
     produtos:{
-      produto: getLoteProduto,
+      produto: getProdutoProduto,
     },
     clientes:{
       nome: getClienteNome,
