@@ -253,7 +253,7 @@ const storage = function (schema, storeManager) {
   that.setTemp = function(tableName, values) {
     const temp = storeManager.getObj('temp')
     temp[tableName] = values
-    storeManager.setObj(tableName, temp[tableName])
+    storeManager.setObj('temp', temp)
     storeManager.commit()
   }
   
@@ -265,7 +265,7 @@ const storage = function (schema, storeManager) {
   that.setTempField = function(tableName, field, value) {
     const temp = storeManager.getObj('temp')
     temp[tableName][field] = value
-    storeManager.setObj(tableName, temp[tableName])
+    storeManager.setObj('temp', temp)
     storeManager.commit()
   }
   
