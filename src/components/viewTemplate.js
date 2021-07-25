@@ -22,6 +22,7 @@ export default function ViewTemplate (props) {
     function setTempField (field) {
       return (value) => {
         const itemName = storage.getField(props.formName, field, value)
+        console.log(itemName || 'No itemName')
         if (itemName) {
           const item = storage.getRow(storage.getRow(props.formName + 'Index', itemName))
           for (let prop in item) {
@@ -31,6 +32,7 @@ export default function ViewTemplate (props) {
               )
             }
           }
+          console.log(dataOuput)
         } else {
           dataOuput = []
         }
