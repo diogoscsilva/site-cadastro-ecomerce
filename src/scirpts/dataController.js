@@ -6,9 +6,11 @@ const storeManagerCookies = function (schema) {
   let stage = {}
   let cookies = document.cookie.split(';')
   if (!cookies[0]) {
+    let dataLoad
     for (let table in schema) {
       if (schema.hasOwnProperty(table)) {
         storeObj[table] = dataPreLoad[table] || []
+        dataLoad = (dataLoad && true) || dataLoad
         storeObj.temp[table] = {}
         stage[table] = true
         if (schema[table].fieldIndex) {
@@ -27,6 +29,10 @@ const storeManagerCookies = function (schema) {
       }
     }
     stage.temp = true
+    if (dataLoad) {
+      that.commit()
+      dataLoad = undefined
+    }
   } else {
     for (let i = 0; i < cookies.length; i++) {
       const cookieData = (cookies[i] || '').trim().split('=')
@@ -62,6 +68,7 @@ const storeLocalManager = function (schema) {
   const that = {}
   const storeObj = {temp:{}}
   let stage = {}
+  let dataLoad
   for (let table in schema) {
     if (schema.hasOwnProperty(table)) {
       if (localStorage.getItem(table)) {
@@ -80,6 +87,7 @@ const storeLocalManager = function (schema) {
         }
       } else {
         storeObj[table] = dataPreLoad[table + 'Index'] || []
+        dataLoad = (dataLoad && true) || dataLoad
         storeObj.temp[table] = {}
         stage[table] = true
         if (schema[table].fieldIndex) {
@@ -102,6 +110,10 @@ const storeLocalManager = function (schema) {
     storeObj.temp = JSON.parse(localStorage.getItem('temp'))
   } else {
     stage.temp = true
+  }
+  if (dataLoad) {
+    that.commit()
+    dataLoad = undefined
   }
   that.setObj = function(objname, obj) {
     storeObj[objname] = obj

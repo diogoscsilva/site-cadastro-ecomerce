@@ -1,12 +1,4 @@
-*{
-  margin: 0;
-  padding: 0;
-}
 
-html {
-  scroll-behavior:smooth;
-  background-image: url(./assets/bg.png)
-}
 header {
   color: rgb(55, 18, 158);
   font-size: 1.4em;

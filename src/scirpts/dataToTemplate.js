@@ -87,7 +87,7 @@ export const buttonsText = {
     notas: 'Emissao de nota',
     clientes: 'Cadastro de clientes',
   },
-  setctionConsulta: {
+  sectionConsulta: {
     produtos: 'Consulta de produtos',
     clientes: 'Consulta de clientes',
     lotes: 'Consulta de lotes de produtos',
