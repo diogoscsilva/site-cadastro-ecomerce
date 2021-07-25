@@ -32,6 +32,10 @@ export default function ViewTemplate (props) {
               )
             }
           }
+          console.log(value)
+          console.log(temp)
+          console.log(item)
+          console.log(dataOuput)
         } else {
           dataOuput = []
         }
