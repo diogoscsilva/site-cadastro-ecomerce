@@ -13,7 +13,7 @@ const tableFields = {
 export default function ViewTemplate (props) {
 
     const [temp, setTemp] = useState('')
-    let dataOuput = []
+    let dataOutput = []
     useEffect(() =>{
       setTemp('')
     },[props.formName])
@@ -27,17 +27,13 @@ export default function ViewTemplate (props) {
           const item = storage.getRow(props.formName, index)
           for (let prop in item) {
             if (item.hasOwnProperty(prop)) {
-              dataOuput.push(
-                <p>{prop} : {item[prop]}</p>
+              dataOutput.push(
+                <p key={prop}>{prop} : {item[prop]}</p>
               )
             }
           }
-          console.log(value)
-          console.log(temp)
-          console.log(item)
-          console.log(dataOuput)
         } else {
-          dataOuput = []
+          dataOutput = []
         }
         setTemp(value)
       }
@@ -48,7 +44,7 @@ export default function ViewTemplate (props) {
     }
 
     
-    const listInput = tableFields[props.formName].map(field =>
+    let listInput = tableFields[props.formName].map(field =>
       <InputTemplate key={field[0]} fieldName={field[0]} temp={temp}
       getTempField={getTempField(field[0])} info = {field[1]}
       setTempField={setTempField(field[0])}/>
@@ -59,7 +55,7 @@ export default function ViewTemplate (props) {
 
       <div>
          {listInput}
-         {dataOuput}
+         {dataOutput}
       </div>
     )
   }
