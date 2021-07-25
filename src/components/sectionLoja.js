@@ -1,4 +1,4 @@
-import React from "react"
+import React, {Image} from "react"
 import storage from "../scirpts/dataController"
 
 export default function Loja () {
