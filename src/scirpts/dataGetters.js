@@ -36,7 +36,7 @@ function getByPrimaryIndex (nomeTabela, nomeIndex, nomeProp, tratamentoFunc) {
   }
   function trataProduto (produto) {
     if (produto) {
-      produto.foto = undefined
+      delete produto.foto
       return produto
     }
   }  

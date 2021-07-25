@@ -5,6 +5,8 @@ import ViewTemplate from "./viewTemplate"
 const buttonsText = {
   produtos: 'Consulta de produtos',
   clientes: 'Consulta de clientes',
+  lotes: 'Consulta de lotes de produtos',
+  notas: 'Consulta de notas de compras',
 }
 
 export default function SectionConsulta () {
