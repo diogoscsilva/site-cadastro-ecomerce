@@ -1,6 +1,6 @@
 import React from "react"
 import "./App.css"
-import SectionCadastro from "./components/views"
+import Views from "./components/views"
 
 function App () {
     return (
