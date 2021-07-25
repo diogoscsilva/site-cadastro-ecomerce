@@ -1,12 +1,19 @@
 import React, {useState, useEffect} from "react"
 import InputTemplate from "./inputTemplate"
-import storage from "../scirpts/dataController"
+import getters from "../scirpts/dataGetters"
 const tableFields = {
     produtos: [
       ['produto', 'nome do produto'],
     ],
     clientes: [
       ['nome', 'nome'],
+    ],
+    lotes: [
+      ['produto', 'nome do produto'],
+    ],
+    notas: [
+      ['nome', 'nome do cliente'],
+      ['produto', 'nome do produto'],
     ],
 }
 
@@ -19,20 +26,29 @@ export default function ViewTemplate (props) {
       setTemp('')
     },[props.formName])
 
+    function dataToCompnonent (item) {
+      data = []
+      for (let prop in item) {
+        if (item.hasOwnProperty(prop)) {
+          data.push(
+            <p key={prop}>{prop} : {item[prop]}</p>
+          )
+        }
+      }
+      return data
+    }
 
     function setTempField (field) {
       return (value) => {
-        const itemName = storage.getField(props.formName, field, value)
-        if (itemName) {
+        const itens = getters[props.formName][field](value)
+        if (itens) {
           let data = []
-          const index = storage.getRow(props.formName + 'Index', itemName)
-          const item = storage.getRow(props.formName, index)
-          for (let prop in item) {
-            if (item.hasOwnProperty(prop)) {
-              data.push(
-                <p key={prop}>{prop} : {item[prop]}</p>
-              )
-            }
+          if (itens.length && itens.map) {
+            itens.map((item)=>{
+              data.push(<div> {dataToCompnonent(item)}</div>)
+            })
+          } else {
+            data = dataToCompnonent(itens)
           }
           setDataOutput(data)
         } else {
