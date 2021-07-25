@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react"
 import InputTemplate from "./inputTemplate"
 import storage from "../scirpts/dataController"
-import setters from "../scirpts/dataSetters"
 const tableFields = {
     produtos: [
       ['produto', 'nome do produto'],
