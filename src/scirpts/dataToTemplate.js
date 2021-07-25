@@ -1,4 +1,4 @@
-const schema = {
+export const schema = {
   lotes: {
     primariesTables : {
       produto: "produtos",
@@ -25,7 +25,7 @@ const schema = {
   },
 }
 
-const tableFields = {
+export const tableFields = {
   formTemplate:{
     produtos: [
       ['produto', 'nome do produto'],
@@ -75,7 +75,7 @@ const tableFields = {
 }
 
 
-const buttonsText = {
+export const buttonsText = {
    views: {
     sectionConsulta: 'Consultas',
     sectionLoja: 'Loja',
@@ -95,7 +95,7 @@ const buttonsText = {
   },
 }
 
-const dataPreLoad = {
+export const dataPreLoad = {
   produtos: [
     {
       descricao: "ferro de passar",
@@ -110,10 +110,3 @@ const dataPreLoad = {
   }
 }
 
-const dataObj = {
-  schema,
-  tableFields,
-  buttonsText,
-  dataPreLoad,
-}
-export default dataObj
