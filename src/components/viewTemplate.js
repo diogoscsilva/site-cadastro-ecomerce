@@ -35,14 +35,11 @@ export default function ViewTemplate (props) {
         } else {
           dataOuput = []
         }
-        storage.setTempField(props.formName, field, value)
       }
     }
     
     function getTempField (field) {
-      return () => {
-        storage.getTempField(props.formName, field)
-      }
+      return () => ''
     }
 
     function submitHandler (e) {
