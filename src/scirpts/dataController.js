@@ -228,7 +228,9 @@ const storage = function (schema, storeManager) {
       if (typeof table[key] === 'number' || typeof table[key] === 'string') {
         return table[key]
       }
-      return {...table[key]}
+      if (table[key]) {
+        return {...table[key]}
+      }
     }
   }
   
