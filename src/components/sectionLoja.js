@@ -11,8 +11,8 @@ export default function Loja () {
       <section className= "section">
         <div className = "card">
           <h3 className = "product-name">{item.produto}</h3>
-          <img
-            src = {item.foto} alt={item.produto}
+          <Image
+            source = {require(item.foto)} alt={item.produto}
           />
           <p className = "description">
             {item.descricao}
