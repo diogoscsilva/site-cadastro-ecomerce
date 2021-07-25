@@ -225,7 +225,7 @@ const storage = function (schema, storeManager) {
   that.getRow = function(tableName, key) {
     const table = storeManager.getObj(tableName)
     if (table) {
-      if (typeof table[key] === 'number' || typeof table[key] === 'number') {
+      if (typeof table[key] === 'number' || typeof table[key] === 'string') {
         return table[key]
       }
       return {...table[key]}
