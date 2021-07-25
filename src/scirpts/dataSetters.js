@@ -148,7 +148,7 @@ function setCliente (cliente, nomePrevio) {
     clientes: setCliente,
     checks: {
       notas:{
-        quantidade: [quantidadeDipsonivel, produto],
+        quantidade: [quantidadeDipsonivel, 'produto'],
         produto: [existeProduto],
         nome: [existeCliente],
       },
