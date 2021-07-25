@@ -9,6 +9,7 @@ export default function InputTemplate (props) {
    
     return (
       <input type="text" placeholder={props.info} 
+        className = {props.className}
         value={field} onChange = {
           e => {
             setField(e.target.value)

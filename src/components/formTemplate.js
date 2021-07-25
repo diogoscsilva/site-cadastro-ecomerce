@@ -48,7 +48,8 @@ export default function FormTemplate (props) {
       return (value) => {
         storage.setTempField(props.formName, field, value)
         if (checks[props.formName] && checks[props.formName][field]) {
-          if (checks[props.formName][field](value)) {
+          if (checks[props.formName][field][0](value,
+             ...checks[props.formName][field].slice(1))) {
             setCheckAlert(false)
           } else {
             setCheckAlert(true)
