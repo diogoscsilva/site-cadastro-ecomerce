@@ -23,9 +23,7 @@ export default function ViewTemplate (props) {
       return (value) => {
         const itemName = storage.getField(props.formName, field, value)
         if (itemName) {
-          console.log(props.formName + 'Index')
           const index = storage.getRow(props.formName + 'Index', itemName)
-          console.log(index)
           const item = storage.getRow(index)
           for (let prop in item) {
             if (item.hasOwnProperty(prop)) {
@@ -34,6 +32,10 @@ export default function ViewTemplate (props) {
               )
             }
           }
+          console.log(value)
+          console.log(temp)
+          console.log(item)
+          console.log(dataOuput)
         } else {
           dataOuput = []
         }
