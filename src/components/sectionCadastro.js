@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import FormTemplate from "./formTemplate"
 
 
@@ -12,15 +12,31 @@ const buttonsText = {
 export default function SectionCadastro (props) {
  
     const [activeForm, setActiveForm] = useState('produtos')
+    const [refresh, setRefresh] = useState(false)
     
-    
+    useEffect(()=>{
+      setRefresh(false)
+    },[refresh])
+
     const listTable = Object.keys(buttonsText).map(tableName => 
-      <li><button key={tableName} onClick={()=>setActiveForm(tableName)}>
+      <li>
+        <button key={tableName} onClick={
+            ()=>{
+              setActiveForm(tableName)
+              setRefresh(true)
+            }
+          }
+        >
           {buttonsText[tableName]}
-      </button></li>
+        </button>
+      </li>
     )
    
-    return (
+    return refresh ?
+      (
+        <></>
+      ):
+      (
       <>
         <nav>
           <ul>
