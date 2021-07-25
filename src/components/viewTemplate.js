@@ -27,7 +27,7 @@ export default function ViewTemplate (props) {
     },[props.formName])
 
     function dataToCompnonent (item) {
-      data = []
+      const data = []
       for (let prop in item) {
         if (item.hasOwnProperty(prop)) {
           data.push(
