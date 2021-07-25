@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react"
 import InputTemplate from "./inputTemplate"
 import storage from "../scirpts/dataController"
 import setters from "../scirpts/dataSetters"
-import checkes from "../scirpts/dataCheckers"
+import checks from "../scirpts/dataCheckers"
 const tableFields = {
     produtos: [
       ['produto', 'nome do produto'],
