@@ -44,9 +44,9 @@ export default function ViewTemplate (props) {
         if (itens) {
           let data = []
           if (itens.length && itens.map) {
-            itens.map((item)=>{
-              data.push(<div> {dataToCompnonent(item)}</div>)
-            })
+            for (let i = 0; i < itens.length; i++) {
+              data.push(<div> {dataToCompnonent(itens[i])}</div>)
+            }
           } else {
             data = dataToCompnonent(itens)
           }

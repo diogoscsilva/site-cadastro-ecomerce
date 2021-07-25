@@ -152,7 +152,7 @@ function setCliente (cliente, nomePrevio) {
         produto: [existeProduto],
         nome: [existeCliente],
       },
-      lotes:{
+      produtos:{
         produto: [existeProduto],
       },
       lotes:{
