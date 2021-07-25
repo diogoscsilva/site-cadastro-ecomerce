@@ -13,7 +13,7 @@ const tableFields = {
 
 export default function ViewTemplate (props) {
 
-    const [temp, setTemp] = useState(storage.getTemp(props.formName))
+    const [temp, setTemp] = useState('')
     let dataOuput = []
     useEffect(() =>{
       setTemp(storage.getTemp(props.formName))
@@ -35,6 +35,7 @@ export default function ViewTemplate (props) {
         } else {
           dataOuput = []
         }
+        setTemp(value)
       }
     }
     
@@ -42,26 +43,21 @@ export default function ViewTemplate (props) {
       return () => ''
     }
 
-    function submitHandler (e) {
-      e.preventDefault()
-      setters[props.formName] (storage.getTemp(props.formName))
-      storage.setTemp(props.formName, {})
-      setTemp({})
-    }
     
     const listInput = tableFields[props.formName].map(field =>
-      <InputTemplate key={field[0]} fieldName={field[0]} temp={temp[field[0]]}
+      <InputTemplate key={field[0]} fieldName={field[0]} temp={temp}
       getTempField={getTempField(field[0])} info = {field[1]}
       setTempField={setTempField(field[0])}/>
     )
 
 
     return (
-      <div className="card">
+
+      <div>
         <form action="" onSubmit={submitHandler}>
          {listInput}
-         {dataOuput}
         </form>
+         {dataOuput}
       </div>
     )
   }

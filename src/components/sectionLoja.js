@@ -17,6 +17,9 @@ export default function Loja () {
           <p className = "description">
             {item.descricao}
           </p>
+          <p className = "description">
+            Preco: {item.preco}
+          </p>
         </div>
       </section>
     )
