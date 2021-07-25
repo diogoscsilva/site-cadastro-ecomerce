@@ -39,16 +39,11 @@ root{
 }
 
 nav button {
-  text-decoration: none;
-  background-color: #f44336;
+  background-color: #cc3a30a8;
   color: white;
-  padding: 14px 25px;
   margin-left: 20px;
   margin-bottom: 20px;
-  text-align: center;
-  width: 90px;
-  text-decoration: none;
-  display: inline-block;
+  width: 120px;
 }
 
 

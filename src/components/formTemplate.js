@@ -3,37 +3,7 @@ import InputTemplate from "./inputTemplate"
 import storage from "../scirpts/dataController"
 import setters from "../scirpts/dataSetters"
 import checks from "../scirpts/dataCheckers"
-const tableFields = {
-    produtos: [
-      ['produto', 'nome do produto'],
-      ['descricao', 'descricao do produto'],
-      ['preco', 'preco do produto'],
-      ['foto', 'link da foto do produto'],
-    ],
-    clientes: [
-      ['nome', 'nome'],
-      ['email', 'email'],
-      ['cpf', 'cpf'],
-      ['dataNascimento', 'data de nascimento'],
-      ['telefone', 'telefone'],
-      ['cep', 'cep'],
-      ['rua', 'rua'],
-      ['numero', 'numero'],
-      ['bairro', 'bairro'],
-      ['cidade', 'cidade'],
-      ['estado', 'estado'],
-    ],
-    lotes: [
-      ['produto', 'nome do produto'],
-      ['valor', 'valor da unidade'],
-      ['quantidade', 'quantidade do produto'],
-    ],
-    notas: [
-      ['nome', 'nome do cliente'],
-      ['produto', 'nome do produto'],
-      ['quantidade', 'quantidade do produto'],
-    ],
-}
+import {tableFields} from "../scirpts/dataToTemplate"
 
 export default function FormTemplate (props) {
 
@@ -49,7 +19,7 @@ export default function FormTemplate (props) {
         storage.setTempField(props.formName, field, value)
         if (checks[props.formName] && checks[props.formName][field]) {
           if (checks[props.formName][field][0](value,
-             ...checks[props.formName][field].slice(1))) {
+            getTempField(checks[props.formName][field][1])())) {
             setCheckAlert(false)
           } else {
             setCheckAlert(true)
@@ -73,7 +43,7 @@ export default function FormTemplate (props) {
       setTemp({})
     }
     
-    const listInput = tableFields[props.formName].map(field =>
+    const listInput = tableFields.formTemplate[props.formName].map(field =>
       <InputTemplate 
         key={field[0]} fieldName={field[0]} temp={temp[field[0]]}
         getTempField={getTempField(field[0])} info = {field[1]}

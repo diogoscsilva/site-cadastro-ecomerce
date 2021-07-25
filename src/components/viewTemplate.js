@@ -1,21 +1,7 @@
 import React, {useState, useEffect} from "react"
 import InputTemplate from "./inputTemplate"
 import getters from "../scirpts/dataGetters"
-const tableFields = {
-    produtos: [
-      ['produto', 'nome do produto'],
-    ],
-    clientes: [
-      ['nome', 'nome'],
-    ],
-    lotes: [
-      ['produto', 'nome do produto'],
-    ],
-    notas: [
-      ['nome', 'nome do cliente'],
-      ['produto', 'nome do produto'],
-    ],
-}
+import {tableFields} from "../scirpts/dataToTemplate"
 
 export default function ViewTemplate (props) {
 
@@ -66,7 +52,7 @@ export default function ViewTemplate (props) {
     }
 
     
-    const listInput = tableFields[props.formName].map(field =>
+    const listInput = tableFields.viewTemplate[props.formName].map(field =>
       <InputTemplate 
         key={field[0]} fieldName={field[0]} temp={temp}
         getTempField={getTempField(field[0])} info = {field[1]}

@@ -1,29 +1,5 @@
-const schema = {
-    lotes: {
-      primariesTables : {
-        produto: "produtos",
-      },
-    },
-    notas: {
-      primariesTables : {
-        produto: "produtos",
-        nome: "clientes",
-      },
-    },
-    clientes: {
-      foreingIndexes : {
-        notas: "nomeNotaIndex",
-      },
-      fieldIndex: 'nome'
-    },
-    produtos: {
-      foreingIndexes : {
-        lotes: "produtoLoteIndex",
-        notas: "produtoNotaIndex",
-      },
-      fieldIndex: 'produto'
-    },
-  }
+import {dataPreLoad, schema} from "./dataToTemplate"
+
 const storeManagerCookies = function (schema) {
   const that = {}
   const storeObj = {temp:{}}
@@ -32,17 +8,18 @@ const storeManagerCookies = function (schema) {
   if (!cookies[0]) {
     for (let table in schema) {
       if (schema.hasOwnProperty(table)) {
-        storeObj[table] = []
+        storeObj[table] = dataPreLoad[table] || []
         storeObj.temp[table] = {}
         stage[table] = true
         if (schema[table].fieldIndex) {
-          storeObj[table + 'Index'] = {}
+          storeObj[table + 'Index'] = dataPreLoad[table + 'Index'] || {}
           stage[table + 'Index'] = true
         }
         if (schema[table].foreingIndexes) {
           for (let foreingIndex in schema[table].foreingIndexes) {
             if (schema[table].foreingIndexes.hasOwnProperty(foreingIndex)) {
-              storeObj[schema[table].foreingIndexes[foreingIndex]] = {}
+              storeObj[schema[table].foreingIndexes[foreingIndex]] =
+              dataPreLoad[schema[table].foreingIndexes[foreingIndex]] || {}
               stage[schema[table].foreingIndexes[foreingIndex]] = true
             }
           }
@@ -102,17 +79,18 @@ const storeLocalManager = function (schema) {
           }
         }
       } else {
-        storeObj[table] = []
+        storeObj[table] = dataPreLoad[table + 'Index'] || []
         storeObj.temp[table] = {}
         stage[table] = true
         if (schema[table].fieldIndex) {
-          storeObj[table + 'Index'] = {}
+          storeObj[table + 'Index'] = dataPreLoad[table + 'Index'] || {}
           stage[table + 'Index'] = true
         }
         if (schema[table].foreingIndexes) {
           for (let foreingIndex in schema[table].foreingIndexes) {
             if (schema[table].foreingIndexes.hasOwnProperty(foreingIndex)) {
-              storeObj[schema[table].foreingIndexes[foreingIndex]] = {}
+              storeObj[schema[table].foreingIndexes[foreingIndex]] =
+              dataPreLoad[schema[table].foreingIndexes[foreingIndex]] || {}
               stage[schema[table].foreingIndexes[foreingIndex]] = true
             }
           }

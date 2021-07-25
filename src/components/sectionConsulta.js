@@ -1,13 +1,6 @@
 import React, {useState, useEffect} from "react"
 import ViewTemplate from "./viewTemplate"
-
-
-const buttonsText = {
-  produtos: 'Consulta de produtos',
-  clientes: 'Consulta de clientes',
-  lotes: 'Consulta de lotes de produtos',
-  notas: 'Consulta de notas de compras',
-}
+import {buttonsText} from "../scirpts/dataToTemplate"
 
 export default function SectionConsulta () {
  
@@ -18,7 +11,7 @@ export default function SectionConsulta () {
       setRefresh(false)
     },[refresh])
 
-    const listTable = Object.keys(buttonsText).map(tableName => 
+    const listTable = Object.keys(buttonsText.sectionConsulta).map(tableName => 
       <li>
         <button key={tableName} onClick={
             ()=>{
@@ -27,7 +20,7 @@ export default function SectionConsulta () {
             }
           }
         >
-          {buttonsText[tableName]}
+          {buttonsText.sectionConsulta[tableName]}
         </button>
       </li>
     )

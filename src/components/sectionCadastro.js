@@ -1,13 +1,7 @@
 import React, {useState, useEffect} from "react"
 import FormTemplate from "./formTemplate"
+import {buttonsText} from "../scirpts/dataToTemplate"
 
-
-const buttonsText = {
-  produtos: 'Cadastro de produtos',
-  lotes: 'Inclusao de lote de produto',
-  notas: 'Emissao de nota',
-  clientes: 'Cadastro de clientes',
-}
 
 export default function SectionCadastro (props) {
  
@@ -18,7 +12,7 @@ export default function SectionCadastro (props) {
       setRefresh(false)
     },[refresh])
 
-    const listTable = Object.keys(buttonsText).map(tableName => 
+    const listTable = Object.keys(buttonsText.sectionCadastro).map(tableName => 
       <li>
         <button key={tableName} onClick={
             ()=>{
@@ -27,7 +21,7 @@ export default function SectionCadastro (props) {
             }
           }
         >
-          {buttonsText[tableName]}
+          {buttonsText.sectionCadastro[tableName]}
         </button>
       </li>
     )

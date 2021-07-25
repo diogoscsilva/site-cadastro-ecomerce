@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+
 export default function InputTemplate (props) {
  
     const [field, setField] = useState(props.temp)
