@@ -1,10 +1,10 @@
 import React from "react"
 import "./App.css"
-import SectionCadastro from "./components/sectionCadastro"
+import SectionCadastro from "./components/views"
 
 function App () {
     return (
-      <SectionCadastro/>
+      <Views/>
     )
 }
 
