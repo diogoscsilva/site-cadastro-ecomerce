@@ -5,10 +5,10 @@ export default function InputTemplate (props) {
     
     useEffect(() =>{
       setField(props.temp)
-    },[props.temp])
+    },[props.temp, props.fromName])
    
     return (
-      <input type="text" placeholder={props.fieldName} 
+      <input type="text" placeholder={props.info} 
         value={field} onChange = {
           e => {
             setField(e.target.value)

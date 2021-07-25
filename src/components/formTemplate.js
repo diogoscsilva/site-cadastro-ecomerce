@@ -4,50 +4,33 @@ import storage from "../scirpts/dataController"
 import setters from "../scirpts/dataSetters"
 const tableFields = {
     produtos: [
-      'produto',
-      'descricao',
-      'preco',
-      'foto',
+      ['produto', 'nome do produto'],
+      ['descricao', 'descricao do produto'],
+      ['preco', 'preco do produto'],
+      ['foto', 'link da foto do produto'],
     ],
     clientes: [
-      'nome',
-      'email',
-      'cpf',
-      'dataNascimento',
-      'telefone',
-      'cep',
-      'rua',
-      'numero',
-      'bairro',
-      'cidade',
-      'estado',
+      ['nome', 'nome'],
+      ['email', 'email'],
+      ['cpf', 'cpf'],
+      ['dataNascimento', 'data de nascimento'],
+      ['telefone', 'telefone'],
+      ['cep', 'cep'],
+      ['rua', 'rua'],
+      ['numero', 'numero'],
+      ['bairro', 'bairro'],
+      ['cidade', 'cidade'],
+      ['estado', 'estado'],
     ],
     lotes: [
-      'valor',
-      'data',
-      'produto',
-      'quantidade',
-      'disponiveis',
+      ['produto', 'nome do produto'],
+      ['valor', 'valor da unidade'],
+      ['quantidade', 'quantidade do produto'],
     ],
     notas: [
-      'nome',
-      'produto',
-      'nomeNota',
-      'produtoNota',
-      'data',
-      'quantidade',
-      'preco',
-      'lote',
-      'email',
-      'cpf',
-      'dataNascimento',
-      'telefone',
-      'cep',
-      'rua',
-      'numero',
-      'bairro',
-      'cidade',
-      'estado',
+      ['nome', 'nome do cliente'],
+      ['produto', 'nome do produto'],
+      ['quantidade', 'quantidade do produto'],
     ],
 }
 
@@ -78,9 +61,10 @@ export default function FormTemplate (props) {
       setTemp({})
     }
     
-    const listInput = tableFields[props.formName].map(fieldName =>
-      <InputTemplate key={fieldName} fieldName={fieldName} temp={temp[fieldName]}
-        getTempField={getTempField(fieldName)}  setTempField={setTempField(fieldName)}/>
+    const listInput = tableFields[props.formName].map(field =>
+      <InputTemplate key={field[0]} fieldName={field[0]} temp={temp[field[0]]}
+      formName = {props.formName} getTempField={getTempField(field[0])}
+      info = {field[1]} setTempField={setTempField(field[0])}/>
     )
     
     return (
