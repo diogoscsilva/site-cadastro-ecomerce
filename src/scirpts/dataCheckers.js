@@ -31,4 +31,4 @@ import storage from "./dataController"
       },
     }
 
-    export default getters
+    export default checks
