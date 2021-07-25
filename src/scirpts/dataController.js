@@ -10,7 +10,7 @@ const storeManagerCookies = function (schema) {
     for (let table in schema) {
       if (schema.hasOwnProperty(table)) {
         storeObj[table] = dataPreLoad[table] || []
-        dataLoad = (dataLoad && true) || dataLoad
+        dataLoad = (dataPreLoad[table] && true) || dataLoad
         storeObj.temp[table] = {}
         stage[table] = true
         if (schema[table].fieldIndex) {
@@ -86,8 +86,8 @@ const storeLocalManager = function (schema) {
           }
         }
       } else {
-        storeObj[table] = dataPreLoad[table + 'Index'] || []
-        dataLoad = (dataLoad && true) || dataLoad
+        storeObj[table] = dataPreLoad[table] || []
+        dataLoad = (dataPreLoad[table] && true) || dataLoad
         storeObj.temp[table] = {}
         stage[table] = true
         if (schema[table].fieldIndex) {
