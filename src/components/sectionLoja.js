@@ -1,13 +1,7 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import storage from "../scirpts/dataController"
 
-export default function FormTemplate (props) {
-
-  const [temp, setTemp] = useState(storage.getTemp(props.formName))
-    
-  useEffect(() =>{
-    setTemp(storage.getTemp(props.formName))
-  },[props.formName])
+export default function Loja () {
     
   const itensLength = storage.length('produtos')
   let intesList = []

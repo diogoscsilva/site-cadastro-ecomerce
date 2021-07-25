@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react"
-import FormTemplate from "./sectionCadastro"
+import SectionCadastro from "./sectionCadastro"
+import Loja from "./sectionLoja"
+import SectionConsulta from "./sectionConsulta"
 
 
 const buttonsText = {
@@ -10,7 +12,7 @@ const buttonsText = {
 
 export default function Views () {
  
-    const [activeView, setActiveView] = useState('loja')
+    const [activeView, setActiveView] = useState('sectionLoja')
     const [refresh, setRefresh] = useState(false)
     
     useEffect(()=>{
@@ -18,9 +20,9 @@ export default function Views () {
     },[refresh])
 
    const secitonsComponents = {
-    sectionConsulta: <ViewTemplate/>,
+     sectionConsulta: <SectionConsulta/>,
      sectionLoja: <Loja/>,
-     sectionCadastro: <FormTemplate/>,
+     sectionCadastro: <SectionCadastro/>,
    }
 
 
@@ -28,7 +30,7 @@ export default function Views () {
       <li>
         <button key={sectionName} onClick={
             ()=>{
-              setActiveForm(sectionName)
+              setActiveView(sectionName)
               setRefresh(true)
             }
           }
@@ -46,7 +48,7 @@ export default function Views () {
       <>
         <nav>
           <ul>
-            {listTable}
+            {listSections}
           </ul>
         </nav>
         {secitonsComponents[activeView]}

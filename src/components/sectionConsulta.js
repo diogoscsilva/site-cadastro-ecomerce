@@ -4,11 +4,10 @@ import ViewTemplate from "./viewTemplate"
 
 const buttonsText = {
   produtos: 'Consulta de produtos',
-  notas: 'Consulta de nota',
   clientes: 'Consulta de clientes',
 }
 
-export default function SectionConsulta () {
+export default function ViewTemplate () {
  
     const [activeForm, setActiveForm] = useState('produtos')
     const [refresh, setRefresh] = useState(false)
