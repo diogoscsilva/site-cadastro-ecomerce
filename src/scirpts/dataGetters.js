@@ -5,7 +5,7 @@ function getClienteNome (nome) {
 }
 function trataCliente (cliente) {
   if (cliente) {
-    if (ciente.dataNascimento) {
+    if (cliente.dataNascimento) {
       cliente.dataNascimento = getDateString(cliente.dataNascimento)
     }
     return cliente
@@ -24,9 +24,9 @@ function getByPrimaryIndex (nomeTabela, nomeIndex, nomeProp, tratamentoFunc) {
     if (time) {
       const dateObj =  new Date(time)
       const dateString = 
-        '' + dataNascimento.getDay() + '//' +
-        dataNascimento.getMonth()+ '//' +
-        dataNascimento.getFullYear()
+        '' + dateObj.getDay() + '//' +
+        dateObj.getMonth()+ '//' +
+        dateObj.getFullYear()
       return dateString
     }
   }
