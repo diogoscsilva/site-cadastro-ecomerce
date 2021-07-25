@@ -15,7 +15,7 @@ export default function ViewTemplate (props) {
     const [temp, setTemp] = useState('')
     let dataOuput = []
     useEffect(() =>{
-      setTemp(storage.getTemp(props.formName))
+      setTemp('')
     },[props.formName])
 
 
