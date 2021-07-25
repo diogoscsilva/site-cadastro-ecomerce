@@ -5,7 +5,7 @@ export default function InputTemplate (props) {
     
     useEffect(() =>{
       setField(props.temp)
-    },[props.temp, props.fromName])
+    })
    
     return (
       <input type="text" placeholder={props.info} 

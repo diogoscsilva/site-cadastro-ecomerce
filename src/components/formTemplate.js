@@ -63,8 +63,8 @@ export default function FormTemplate (props) {
     
     const listInput = tableFields[props.formName].map(field =>
       <InputTemplate key={field[0]} fieldName={field[0]} temp={temp[field[0]]}
-      formName = {props.formName} getTempField={getTempField(field[0])}
-      info = {field[1]} setTempField={setTempField(field[0])}/>
+      getTempField={getTempField(field[0])} info = {field[1]}
+      setTempField={setTempField(field[0])}/>
     )
     
     return (
