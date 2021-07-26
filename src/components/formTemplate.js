@@ -9,7 +9,7 @@ export default function FormTemplate (props) {
 
     const [temp, setTemp] = useState(storage.getTemp(props.formName))
     const [checkAlert, setCheckAlert] = useState(false)
-    const [idPrevia, setIdPrevia] = useState('')
+    const [idPrevia, setIdPrevia] = useState()
     
     useEffect(() =>{
       setTemp(storage.getTemp(props.formName))
