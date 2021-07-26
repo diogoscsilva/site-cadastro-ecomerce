@@ -1,3 +1,6 @@
+import React, {Image} from "react"
+import {ironFoto} from "../assets/iron.jpg"
+
 export const schema = {
   lotes: {
     primariesTables : {
@@ -101,8 +104,8 @@ export const dataPreLoad = {
       descricao: "ferro de passar",
       preco: "150",
       produto: "iron",
+      fotoComponent: <Image source={ironFoto} />,
       quantidade: 0,
-      foto: "./assets/iron.jpg"
     },
   ],
   produtoIndex: {
