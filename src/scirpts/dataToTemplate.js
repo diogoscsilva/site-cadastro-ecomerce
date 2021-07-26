@@ -141,7 +141,7 @@ export const dataPreLoad = {
       quantidade: 0,
     },
   ],
-  produtoIndex: {
+  produtosIndex: {
     apple: 0,
     iron: 1,
     toaster: 2,
