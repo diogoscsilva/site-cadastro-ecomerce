@@ -102,7 +102,7 @@ export const dataPreLoad = {
       descricao: "ferro de passar",
       preco: "150",
       produto: "iron",
-      foto: "http://philco.vteximg.com.br/arquivos/ids/179726/1200x1200pixel_72dpi-RGB_Site_ferro_4.jpg?v=637358803419730000",
+      foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzCoxdXgijSpFy_FiJLJgpoTA1ZMXmCa3KyA&usqp=CAU",
       quantidade: 0,
     },
   ],
