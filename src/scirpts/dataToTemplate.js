@@ -129,7 +129,7 @@ export const dataPreLoad = {
     {
       descricao: "monitor ultrawide",
       preco: "1150",
-      produto: "monitos",
+      produto: "monitor",
       foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRU7onot7ovElGTOUtM5hX5-rerzAWBjxEaw&usqp=CAU",
       quantidade: 0,
     },
@@ -142,7 +142,12 @@ export const dataPreLoad = {
     },
   ],
   produtoIndex: {
-    iron: 0
+    apple: 0,
+    iron: 1,
+    toaster: 2,
+    iphone: 3,
+    monitor: 4,
+    razor: 5,
   }
 }
 
