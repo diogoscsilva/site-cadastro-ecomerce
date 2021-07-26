@@ -23,7 +23,7 @@ export default function Loja () {
     )
   }
   return (
-    <div className = "sections">
+    <div className = "section">
       {intesList}
     </div>
   )

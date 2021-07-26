@@ -9,6 +9,7 @@ export default function FormTemplate (props) {
 
     const [temp, setTemp] = useState(storage.getTemp(props.formName))
     const [checkAlert, setCheckAlert] = useState(false)
+    const [idPrevia, setIdPrevia] = useState('')
     
     useEffect(() =>{
       setTemp(storage.getTemp(props.formName))
@@ -38,7 +39,7 @@ export default function FormTemplate (props) {
 
     function submitHandler (e) {
       e.preventDefault()
-      setters[props.formName] (storage.getTemp(props.formName))
+      setters[props.formName] (storage.getTemp(props.formName), idPrevia)
       storage.setTemp(props.formName, {})
       setTemp({})
     }
@@ -55,6 +56,10 @@ export default function FormTemplate (props) {
     return (
       <div className="card">
         <form action="" onSubmit={submitHandler}>
+         <input type="text" value = {idPrevia} 
+           onChage={e => setIdPrevia(e.target.value)}
+           placeholder="colacar id previa para trocar"
+         />
          {listInput}
          <input type="submit" value = "Enviar" aria-label = "Enivar os dados para cadastro"/>
     

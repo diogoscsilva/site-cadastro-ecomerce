@@ -127,7 +127,7 @@ export const dataPreLoad = {
       quantidade: 0,
     },
     {
-      descricao: "monitor ultrawwide",
+      descricao: "monitor ultrawide",
       preco: "1150",
       produto: "monitos",
       foto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRU7onot7ovElGTOUtM5hX5-rerzAWBjxEaw&usqp=CAU",
