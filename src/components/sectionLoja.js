@@ -1,12 +1,17 @@
 import React, {Image} from "react"
 import storage from "../scirpts/dataController"
+import {ironFoto} from "../assets/iron.jpg"
+
+const fotos = {
+  ironFoto,
+}
 
 export default function Loja () {
   const itensLength = storage.length('produtos')
   let intesList = []
   for (let i = 0; i < itensLength; i++) {
     let item = storage.getRow('produtos', i)
-    const foto = (item.foto && <Image source={item.foto}/>) || item.fotoComponent
+    const foto =  <Image source={item.foto || fotos[item.produto + 'fotos']}/>
     intesList.push(
       <section className= "section">
         <div className = "card">
