@@ -1,4 +1,4 @@
-import React, {Image} from "react"
+import React from "react"
 import storage from "../scirpts/dataController"
 
 
@@ -11,7 +11,7 @@ export default function Loja () {
       <section className= "section">
         <div className = "card">
           <h3 className = "product-name">{item.produto}</h3>
-          <Image source={"../assets/iron.jpg"}/>
+          <img src={"../assets/iron.jpg"}/>
           <p className = "description">
             {item.descricao}
           </p>
